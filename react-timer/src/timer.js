@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import './style.css';
 
-const [second, setSecond] = useState('00');
-const [minute, setMinute] = useState('00');
-const [isActive, setIsActive] = useState(false);
-const [counter, setCounter] = useState(0);
-
 const Timer = () => {
+    const [second, setSecond] = useState('00');
+    const [minute, setMinute] = useState('00');
+    const [isActive, setIsActive] = useState(false);
+    const [counter, setCounter] = useState(0);
 
     useEffect(() => {
         let intervalId;
@@ -29,6 +28,13 @@ const Timer = () => {
         return () => clearInterval(intervalId);
       }, [isActive, counter])
 
+      function stopTimer() {
+          setSecond("00");
+          setMinute("00");
+          setIsActive(false);
+          setCounter(0);
+      }
+
     return (
         <div className="container">
             <div className="time">
@@ -38,7 +44,7 @@ const Timer = () => {
             </div>
             <div className="buttons">
                 <button onClick={() => setIsActive(!isActive)} className="start">{isActive ? "Pause" : "Start"}</button>
-                <button onClick={() => null} className="reset">Reset</button>
+                <button onClick={stopTimer} className="reset">Reset</button>
             </div>
             </div>
     )
@@ -58,6 +64,6 @@ We append an extra zero to the second and minute values so that we always have 2
 We update the second and minute states using the computedMinute and computedSecond values.
 count is also increased by 1 every second the effect runs.
 We return a cleanup function to clear the interval when the effect stops running.
-Lastly, we add the isActive and counter state to the dependency array. This ensures that the effect only runs when either of them changes.""
-
+Lastly, we add the isActive and counter state to the dependency array. This ensures that the effect only runs when either of them changes."
+https://dev.to/emmaadesile/build-a-timer-using-react-hooks-3he2
 */
