@@ -1,9 +1,11 @@
-import './App.css';
-import Timer from './Timer.js';
+import "./App.css";
+// import Timer from "./timer.js";
+import AltTimer from "./altTimer.js";
 
 function App() {
   return (
-  <Timer/>
+    // <Timer />
+    <AltTimer />
   );
 }
 
