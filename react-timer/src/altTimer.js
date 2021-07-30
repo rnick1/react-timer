@@ -18,6 +18,10 @@ export default function AltTimer() {
             ? `0${secondCounter}`
             : secondCounter;
 
+        if (counter === 2) {
+          console.log("Two seconds!");
+        }
+
         setSecond(computedSecond);
 
         setCounter((counter) => counter + 1);
