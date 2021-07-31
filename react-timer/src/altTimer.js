@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
+import song from "./static/bbell.wav";
 
 export default function AltTimer() {
   const [second, setSecond] = useState("00");
   const [isActive, setIsActive] = useState(false);
   const [counter, setCounter] = useState(0);
+  const [audio] = useState(new Audio(song));
 
   useEffect(() => {
     let intervalId;
@@ -19,7 +21,7 @@ export default function AltTimer() {
             : secondCounter;
 
         if (counter === 2) {
-          console.log("Two seconds!");
+          audio.play();
         }
 
         setSecond(computedSecond);
